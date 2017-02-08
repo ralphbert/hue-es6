@@ -1,12 +1,21 @@
-function inc(number, increment) {
-    // set default to 1 if increment not passed
-    // (or passed as undefined)
-    increment = increment || 1;
-    return number + increment;
+function sum() {
+  var args = Array.prototype.slice.call(arguments);
+  var sum = 0;
+  args.forEach(function (value) {
+    sum += parseInt(value);
+  });
+  return sum;
 }
-console.log(inc(2, 2)); // 4
-console.log(inc(2));    // 3
+console.log(sum(2, 2)); // 4
+console.log(sum(1, 2, 3, 4, 5));    // 15
 
+/*
+// TODO don't use the arguments to generate the sum. use the spread operator and arrow functions instead
+function sumES6() {
 
-// TODO remove line 4 (increment = increment || 1) and instead use a default value on the increment argument.
-// This default value should be produced by another function that simply returns 1
+}
+
+console.log('sum ES6 style');
+console.log(sumES6(3, 3)); // 6
+console.log(sumES6(1, 2, 3, 4, 5, 6));    // 21
+*/
